@@ -1,0 +1,7 @@
+fraq = N*C_LEAD_2*Gl;
+syms K_3 ;
+eqn = K_3*abs(evalfr(fraq, i*wc_REQ_2)) == 1 ;
+K3 = solve(eqn, K_3);
+K3_D = 36893488147419103232/6034345262679891 ; %value in decimals
+
+SYSTEM = K3_D*fraq ;

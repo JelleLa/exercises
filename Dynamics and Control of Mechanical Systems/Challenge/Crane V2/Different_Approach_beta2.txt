@@ -1,0 +1,13 @@
+syms beta_2 ;
+
+N_jwc_REQ_2 = ((i*wc_REQ_2^2)/(0.1*wn_1)^2 + (2*beta_1*i*wc_REQ_2)/(0.1*wn_1) + 1)/((i*wc_REQ_2^2)/(0.1*wn_2)^2 + (2*beta_2*i*wc_REQ_2)/(0.1*wn_2) + 1) ;
+
+C_LEAD_2_jwc_REQ_2 = K2 * (0.5*alpha^2*i*wc_REQ_2+alpha)/(0.5*i*wc_REQ_2 + alpha);
+
+LL = N_jwc_REQ_2 * C_LEAD_2_jwc_REQ_2 ;
+
+ARG_LL = angle(LL);
+
+eqn = ARG_LL == 60*(pi)/(180);
+
+B2 = solve(eqn , beta_2);
