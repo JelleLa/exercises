@@ -1,6 +1,6 @@
 %==============================================================================
 % MOD2 4MC00 / Jelle Langedijk / TU/e
-% V1.1 (C) 2020 Jelle Langedijk, all rights reserved
+% TEMPLATE V1.1 (C) 2020 Jelle Langedijk, all rights reserved
 % https://github.com/JelleLa/templates/tree/master/MATLAB
 %==============================================================================
 
