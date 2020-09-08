@@ -1,6 +1,6 @@
 %==============================================================================
 % MOD3 4MC00 / Jelle Langedijk / TU/e
-% V1.1 (C) 2020 Jelle Langedijk, all rights reserved
+% TEMPLATE V1.1 (C) 2020 Jelle Langedijk, all rights reserved
 % https://github.com/JelleLa/templates/tree/master/MATLAB
 %==============================================================================
 
@@ -10,7 +10,7 @@ clear all; close all; clear vars; clc;
 
  
 
-%% VERTICAL LOAD
+%% INITIATION
 N = 9;
 h = 1/(N);             
 L = 1;                  
