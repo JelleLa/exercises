@@ -1,6 +1,6 @@
 %==============================================================================
 % MOD3 4MC00 / Jelle Langedijk / TU/e
-% TEMPLATE V1.1 (C) 2020 Jelle Langedijk, all rights reserved
+% V1.1 (C) 2020 Jelle Langedijk, all rights reserved
 % https://github.com/JelleLa/templates/tree/master/MATLAB
 %==============================================================================
 
@@ -10,11 +10,10 @@ clear all; close all; clear vars; clc;
 
  
 
-%% INITIATION
-N = 9;
-h = 1/(N);             
-L = 1;                  
-xi = [0:h:L];
+%% VERTICAL LOAD
+N = 8;
+h = 1/(N);                               
+xi = [0:h:N];
 
 
 %% MATRIX FILLER (Neumann)
@@ -37,8 +36,17 @@ end
 
 for k = 2:N-1
     A(k,k+1) = -(1)/(h^(2));
-end 
-    
+end
+
+%% RMS (expression Lu determined by hand). Also see slides lecture 2. Does not work yet
+
+% u_xi = (1/2)-(1/2)*cos(2*pi*xi);
+% Lu_xi = -2*(pi)^(2)*cos(2*pi*xi);
+% 
+% RMS = rms(transpose(rms(transpose(Lu_xi)- A.*transpose(u_xi))));
+
+
+
 %% SOLVE
 
 for i = 1:N
@@ -50,8 +58,6 @@ U = A\b;
 
 v = null(A);
 %% MATRIX FILLER (Dirichlet)
-for g = 1:N
-    A(g,1) = 0;
-end
+A(1,1) = 0;
 
 UD = A\b;
