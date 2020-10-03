@@ -13,5 +13,5 @@ Files are sorted per subject of the Bachelor (years 2018-2021) Mechanical Engine
 * Run `git clone https://github.com/JelleLa/exercises` in the desired clone directory;
 * Only want to clone specific files? Use `wget`.   
 
-### Windows, Mac
+### Windows, MacOS
 Clone the repository via a Git GUI like [GitKraken](https://www.gitkraken.com/). 
