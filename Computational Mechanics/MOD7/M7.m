@@ -53,7 +53,7 @@ Khf = K(5, 2:4);
 Khh = K(5,5);
 
 ug = 0;
-uh = 0;
+uh = 1;
 qf = [0;0;0];
 
 
@@ -65,14 +65,31 @@ qh = Khg*ug + Khf*uf + Khh*uh;
 
 q = [qg;qf;qh];
 
-    
+%% EX 3C
+clear all; close all; clear vars; clc;
+K = [   1, -1, 0, 0, 0; 
+        -1, 2, -1, 0, 0;
+        0, -1, 2, -1, 0;
+        0, 0, -1 , 2, -1;
+        0, 0, 0, -1, 1;
+        ];
+n = length(K); 
+
+Kgg = K(1:(n-1),1:(n-1));
+Kgf = K(1:n-1 , n);
+Kfg = K(n ,1:n-1);
+Kff = K(n,n);
+
+qg = transpose([0 0 0 0]) ;
+uf = 1;
 
 
+ug = Kgg\(qg - Kgf*uf) ;
 
+qf = Kfg*ug +Kff*uf;
 
-
-
-
+u = [ug' , uf]';
+q = [qg' , qf]';
 
 
     
