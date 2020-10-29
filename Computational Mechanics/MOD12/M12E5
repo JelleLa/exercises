@@ -1,0 +1,46 @@
+%==============================================================================
+% MOD12 EX 5 4MC00 / Jelle Langedijk / TU/e
+% TEMPLATE V1.1 (C) 2020 Jelle Langedijk, all rights reserved
+% https://github.com/JelleLa/templates/tree/master/MATLAB
+%==============================================================================
+
+%% PREREQUISITIES
+clear all; close all; clear vars; clc;
+
+%% FED
+ee = cartesianbasis2d('e1', 'e2');
+e1 = ee(1);
+e2 = ee(2);
+
+%% TENSOR INITIATION
+a = 2;
+
+
+A = a*e1*e1 +(1/a)*e2*e2 ;
+A_inv = (1/a)*e1*e1 + a*e2*e2;
+O = 0*e1*e1 + 0*e2*e2 + 0*e1*e2 + 0* e2*e1;
+
+K = [   A, A_inv, O ;
+        A_inv, 2*A, A_inv;
+        O , A_inv, A];
+
+n = 3;
+
+Kff = K(1:(n-1) , 1:(n-1));
+Kgf = K(n , 1:(n-1));
+Kfg = K(1:(n-1) , n) ;
+Kgg = K(n,n);
+
+ug = e1;
+qf = [2*e1 + 2*e2 ; e1 + e2];
+
+uf = Kff\(transpose(qf' - dot(Kgf,ug)));
+
+u = [uf ; ug];
+
+qg = dot(Kgg,ug) + dot(Kfg, uf); % Werkt nog niet!
+
+q = [qf ; qg];
+
+
+
