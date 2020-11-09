@@ -1,0 +1,15 @@
+#======================================================================
+#==== ~ EX 2.5.2 ~ ====================================================
+#====  TEMPLATE VERSION 1.0, (c) 2020 Jelle Langedijk =================
+#====  https://github.com/JelleLa/templates/blob/master/Chi3/model.chi=
+#======================================================================
+
+
+model A():
+
+writeln("x.name evaluates to 'White'");
+writeln("x.real evaluates to 12.5");
+writeln("x evaluates to('White', 12.5)");
+
+
+end

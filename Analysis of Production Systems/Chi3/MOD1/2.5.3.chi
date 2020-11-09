@@ -1,0 +1,34 @@
+#======================================================================
+#==== ~ EX 2.5.3 ~ ====================================================
+#====  TEMPLATE VERSION 1.0, (c) 2020 Jelle Langedijk =================
+#====  https://github.com/JelleLa/templates/blob/master/Chi3/model.chi=
+#======================================================================
+
+
+model A():
+
+list int xs = [0,1,2,3,4,5,6];
+int a, c, h;
+list int b, d, e, f, g;
+
+a = xs[0];
+b = xs[1:];
+c = size(xs);
+d = xs + [3];
+e = [4,5] + xs;
+f = xs - [2,2,3];
+g = xs - xs[2:];
+h = xs[0] + (xs[1:])[0];
+
+
+
+writeln("a evaluates to %s", a);
+writeln("b evaluates to %s", b);
+writeln("c evaluates to %s", c);
+writeln("d evaluates to %s", d);
+writeln("e evaluates to %s", e);
+writeln("f evaluates to %s", f);
+writeln("g evaluates to %s", g);
+writeln("h evaluates to %s", h);
+
+end

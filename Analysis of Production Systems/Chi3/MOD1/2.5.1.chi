@@ -1,0 +1,19 @@
+#======================================================================
+#==== ~ EX 2.5.1 ~ ====================================================
+#====  TEMPLATE VERSION 1.0, (c) 2020 Jelle Langedijk =================
+#====  https://github.com/JelleLa/templates/blob/master/Chi3/model.chi=
+#======================================================================
+
+model A():
+
+real a = -5 ^ 3;
+int b = -5 * 3;
+int c = -5 mod 3;
+
+
+writeln("a evaluates to %s", a);
+writeln("b evaluates to %s", b);
+writeln("a evaluates to %s", c);
+
+
+end
