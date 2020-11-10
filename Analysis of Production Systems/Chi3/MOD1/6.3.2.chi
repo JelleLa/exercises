@@ -1,0 +1,29 @@
+#======================================================================
+#==== ~ EX 6.3.2 ~ ====================================================
+#====  TEMPLATE VERSION 1.0, (c) 2020 Jelle Langedijk =================
+#====  https://github.com/JelleLa/templates/blob/master/Chi3/model.chi=
+#======================================================================
+
+model A():
+
+real a = 1.0, b = 2.0, c = 5.0, sum, mu, sigma_2, s;
+int N, AC = 1000;
+list real samples;
+dist real tst = triangle(a, b, c);
+
+for i in range(0,AC+1):
+    samples =  samples + [sample tst];
+    sum = sum + samples[i];
+end
+
+mu = sum/(size(samples));
+
+for i in range(0,AC+1):
+    s       = (samples[i] - mu)^(2);
+    sigma_2 = ((1)/(size(samples)-1))*s;
+end
+
+writeln("mu = %s", mu);
+writeln("sigma_2 = %s", sigma_2);
+
+end
