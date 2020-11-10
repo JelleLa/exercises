@@ -1,0 +1,58 @@
+#======================================================================
+#==== ~ EX 6.3.3 ~ ====================================================
+#====  TEMPLATE VERSION 1.0, (c) 2020 Jelle Langedijk =================
+#====  https://github.com/JelleLa/templates/blob/master/Chi3/model.chi=
+#======================================================================
+
+model HoL():
+    dist int u = uniform(1, 15);
+    int sc = 1, fsc = 0;
+    bool c = true;
+    int new, oldval;
+    string s;
+
+    new = sample u;
+    write("Your score is %d\n", sc);
+    write("The computer drew %d\n", new);
+
+    while c:
+        writeln("(h)igher or (l)ower or (stop):\n");
+        s = read(string);
+        oldval = new;
+        new = sample u;
+        write("The computer drew %d\n", new);
+        if new == oldval:
+            c = false;
+        elif s == "stop":
+             c = false;
+        else:
+            c = (new > oldval) == (s == "h");
+        end;
+
+        if c:
+            sc = 2 * sc;
+        elif s == "stop":
+            fsc = sc;
+        else:
+            sc = 0;
+        end;
+
+
+        if s == "stop":
+            writeln("Your score before stopping was %d\n", fsc);
+        else:
+            writeln("Your score is %d\n", sc);
+        end
+
+
+    end;
+
+    if s == "stop":
+        writeln("Game stopped per player request\n");
+
+        else:
+        writeln("GAME OVER...\n");
+    end
+
+
+end
