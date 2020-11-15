@@ -1,0 +1,60 @@
+#======================================================================
+#==== ~ EX 8.5.2 ~ ====================================================
+#====  TEMPLATE VERSION 1.0, (c) 2020 Jelle Langedijk =================
+#====  https://github.com/JelleLa/templates/blob/master/Chi3/model.chi=
+#======================================================================
+
+#STill doesnt completely work!
+
+proc R(chan! int send_r):
+    int n = 0;
+    for i in range(0,11):
+        n = i;
+        send_r!n;
+    end
+end
+
+proc Cadd(chan? int receive_add; chan! int send_add; int add_f):
+        int x;
+
+        while true:
+        receive_add?x;
+        x = x + add_f;
+
+        send_add!x
+        end
+end
+
+proc Cmul(chan? int receive_mul; chan! int send_mul; int mul_f):
+        int y;
+
+        while true:
+        receive_mul?y;
+        y = y + mul_f;
+
+        send_mul!y
+        end
+end
+
+proc W(chan? int receive_write):
+        int z;
+
+        while true:
+        receive_write?z;
+        writeln("The calculated value is %s", z)
+        end
+end
+
+
+model SixChildren():
+
+chan int a,b,c,d,e;
+
+    run
+    R(a), Cadd(a, b, 2), Cmul(b,c, 3), Cmul(c,d,2), Cadd(d,e,6), W(e);
+
+end
+
+
+
+

@@ -1,0 +1,63 @@
+#======================================================================
+#==== ~ EX 11.4.2 ~ ====================================================
+#====  TEMPLATE VERSION 1.0, (c) 2020 Jelle Langedijk =================
+#====  https://github.com/JelleLa/templates/blob/master/Chi3/model.chi=
+
+# Exersice does not state much, but they assume a infinite size fifo buffer.
+
+#AFT estimations seem wrong
+#id = product ID
+
+
+type item = tuple(int id; real tt);
+
+proc G(chan! item gb):
+    for i in range (0,11):
+        gb!(i, time);
+        delay 2
+    end
+end
+
+proc B(chan? item gb; chan! item bt):
+    item x;
+    list item xs;
+
+    while true:
+        select gb?x:
+            xs = xs + [x];               # Add product to buffer
+        alt size(xs) > 0, bt!xs[0]:     # Remove product assuming FIFO
+            xs = xs[1:];
+
+        end
+    end
+end
+
+proc S(chan? item bt; chan! item st):
+    dist real stoch = exponential(4.0);
+    item x;
+
+    while true:
+        bt?x;
+        delay sample stoch;
+        st!x
+    end
+end
+
+proc E(chan item st):
+        item x;
+        real aft;
+
+        while true:
+            st?x;
+            aft = (time - x.tt); #AFT: how long it takes for a product to go through all locations
+            writeln("Receive time %s, AFT = %s", x, aft);
+        end
+end
+
+model M():
+    chan item gb, bt, st;
+
+    run
+    G(gb), B(gb, bt), S(bt, st), E(st);
+
+end

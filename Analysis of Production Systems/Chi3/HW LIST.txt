@@ -1,0 +1,25 @@
+This is a list of exercises that I've made.
+
+
+[CHI-3 HW]
+- 1.2.1
+- 1.2.2 
+- 2.5.1
+- 2.5.2
+- 2.5.3
+- 3.6.2
+- 6.3.1
+- 6.3.2
+- 6.3.3
+- 8.5.1
+- 8.5.2 (does not work yet)
+- 9.5.1 (niet verplicht, nog te maken!)
+- 10.5.2
+- 10.5.3 (nog niet gedaan want 9.5.1 nog niet gemaakt)
+
+
+
+[PROBABILITY HW]
+- 1
+- 2
+- 4

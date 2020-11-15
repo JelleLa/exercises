@@ -1,0 +1,41 @@
+#======================================================================
+#==== ~ EX 10.5.2 ~ ====================================================
+#====  TEMPLATE VERSION 1.0, (c) 2020 Jelle Langedijk =================
+#====  https://github.com/JelleLa/templates/blob/master/Chi3/model.chi=
+#======================================================================
+
+#G genereert iedere 4 seconden een product. Echter, S doet ove rhet verwerken van een product 5 seconden.
+# Troughput is dus 1 product per 5 tijdsunits, en de flowtime van een item is 5
+
+
+proc G(chan! item a; real ta):
+    while true:
+        a!time; delay ta
+    end
+end
+
+proc S(chan? item a; chan! item b; real ts):
+    item x;
+    while true:
+        a?x; delay ts; b!x
+    end
+end
+
+proc E(chan item a; int N):
+    item x;
+    for i in range(N):
+        a?x; write("%f, %f\n", time, time - x)
+    end
+end
+
+
+type item = real;
+model M(real ta, ts; int N):
+
+chan item a, b;
+
+    run
+        G(a, ta),
+        S(a, b, ts),
+        E(b, N)
+end

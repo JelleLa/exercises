@@ -1,0 +1,27 @@
+#======================================================================
+#==== ~ EX 8.5.1 ~ ====================================================
+#====  TEMPLATE VERSION 1.0, (c) 2020 Jelle Langedijk =================
+#====  https://github.com/JelleLa/templates/blob/master/Chi3/model.chi=
+#======================================================================
+
+proc P(chan int a, b):
+    int x;
+    while true:
+        a!x;
+        x = x + 1;
+        write("%d\n", x);
+        b?x
+    end
+end
+
+
+
+model PP():
+    chan int a, b;
+    run P(a,b), P(b,a)
+end
+
+
+# Proc P is both sender and receiver of same data
+
+
